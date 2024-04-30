@@ -6,7 +6,7 @@ from .views import (
     ContactDeleteView,
     ContactCreateView,
     IndexView,
-    ContactListView, note_list, note_create, note_update, note_delete
+    ContactListView
 )
 
 app_name = 'contacts'
@@ -19,8 +19,4 @@ urlpatterns = [
     path('contacts/delete/<int:pk>/', ContactDeleteView.as_view(), name='delete'),
     path('contacts/search/', ContactSearchResultsView.as_view(), name='search'),
     path('birthdays/', ContactUpcomingBirthdayListView.as_view(), name='birthdays'),
-    path('notes/', note_list, name='note_list'),
-    path('notes/create/', note_create, name='note_create'),
-    path('notes/<int:pk>/update/', note_update, name='note_update'),
-    path('notes/<int:pk>/delete/', note_delete, name='note_delete'),
 ]

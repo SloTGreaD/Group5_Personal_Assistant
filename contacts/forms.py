@@ -1,5 +1,5 @@
 from django import forms
-from .models import Contact, Note
+from .models import Contact
 
 class ContactForm(forms.ModelForm):
     first_name = forms.CharField(max_length=50, widget=forms.TextInput(attrs={"class": "form-control"}))
@@ -20,9 +20,5 @@ class ContactForm(forms.ModelForm):
             },
         }
 
-class NoteForm(forms.ModelForm):
-    tags = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите теги через запятую'}), required=False)
-    class Meta:
-        model = Note
-        fields = ['title', 'content', 'tags']
+
         
