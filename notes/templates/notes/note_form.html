@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Форма нотатки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #666;
+        }
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box; 
+        }
+        button, .menu-link {
+            display: block;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 20px;
+            width: calc(100% - 22px); /* Adjust width to fit form width */
+            text-align: center;
+            text-decoration: none; /* Remove underline from link */
+        }
+        button:hover, .menu-link:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+<h2>Форма нотатки</h2>
+<form method="post">
+    {% csrf_token %}
+    <label for="id_title">Заголовок</label>
+    {{ form.title }}
+    <label for="id_content">Вміст</label>
+    {{ form.content }}
+    <label for="id_tags">Теги</label>
+    {{ form.tags }}
+    <button type="submit">Зберегти</button>
+</form>
+<a href="{% url 'contacts:main' %}" class="menu-link">Головне меню</a>
+</body>
+</html>
+

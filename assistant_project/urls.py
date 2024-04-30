@@ -20,4 +20,5 @@ from django.urls import path, include
 urlpatterns = [
     path('', include('contacts.urls')),
     path('users/', include('users.urls')),
+    path('notes/', include('notes.urls')),
 ]

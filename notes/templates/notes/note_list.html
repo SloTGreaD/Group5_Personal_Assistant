@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Нотатки</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        .notes-container,
+        .menu-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 20px auto;
+        }
+        .note {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .note:last-child {
+            border-bottom: none;
+        }
+        .note a, .menu-link {
+            color: #5cb85c;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        .note a:hover, .menu-link:hover {
+            text-decoration: underline;
+        }
+        .create-link, .menu-link {
+            display: block;
+            width: fit-content;
+            background-color: #5cb85c;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin: 20px auto;
+        }
+        .create-link:hover, .menu-link:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <h2>Нотатки</h2>
+    <div class="notes-container">
+        {% for note in notes %}
+        <div class="note">
+            {{ note.title }} -
+            <a href="{% url 'notes:note_update' note.pk %}">Редагувати</a> -
+            <a href="{% url 'notes:note_delete' note.pk %}">Видалити</a>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'notes:note_create' %}" class="create-link">Створити нову нотатку</a>
+    <a href="{% url 'contacts:main' %}" class="menu-link">Головне меню</a>
+</body>
+</html>
+
